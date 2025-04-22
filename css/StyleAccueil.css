@@ -1,0 +1,369 @@
+/********** Styles généraux de la page **********/
+
+*{
+    box-sizing: border-box; /* On exclut les marges dans le calcul de la dimension des box */
+    margin: 0; /* Supprime les marges par défault de tout les éléments */
+    padding: 0; /* Supprime le padding par défault de tout les éléments */
+}
+
+html{
+    font-family: Arial, sans-serif; /* Police par défault pour toute la page */
+}
+
+body{
+    display: flex;
+    flex-direction: column; /*  header, section et footer alignés verticalement */
+    min-height: 100vh; /* 100% de la page visible (vh) */
+}
+
+/********** En-tête **********/
+
+/* En-tête contenant la barre de navigation et le background image */
+.header{
+    background-image: url("../Picture/PageAccueil/jungle_sunset_HighViewpoint.png");
+    background-attachment: fixed; /* L'image reste fixe même lors du défilement */
+    background-position: top; /* L'image est positionné en haut de la balise */
+    background-repeat: no-repeat; /* L'image n'est pas répété */
+    background-size: cover; /* L'image remplie entièrement son espace disponible */
+    display: flex;
+    flex-direction: column;
+    height: 750px;
+}
+
+/***** Barre de navigation menu *****/
+
+/* Container qui contient la barre de navigation */
+.container-barre-navigation{
+    padding: 15px; /* Espace entre la barre de navigation est les contours de la page */
+}
+
+/* Barre de navigation menu */
+nav{
+    background-color: white;
+    border-radius: 30px; /* Pour arrondir les bords */
+    height: 65px;
+    width: 600px;
+    box-shadow: 0px 0px 5px rgb(70, 70, 70); /* 0px de décalage verticale et horizontal, 5px d'épaisseur */
+}
+
+/* Balise <ul> de la liste */
+.liste-items{
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+    line-height: 65px; /* Pour que la hauteur de ligne soit identique à celle du conteneur nav */
+    list-style: none; /* Supprimer les puces de la liste */
+    font-size: 20px;
+    padding: 0px 18px; /* Marges intérieurs en haut et en bas de 0px et à gauche et à droite de 18px */
+}
+
+/* Balise <li> de la liste */
+.items{
+    color: rgb(70, 70, 70);
+    cursor: pointer; /* Pour montrer qu'on peut cliquer sur les éléments */
+    flex-shrink: 0; /* Les éléments ne vont pas à la ligne lorsque l'écran diminu */
+    transition: color 0.3s ease;
+}
+
+.items:hover{
+    color: rgb(224, 149, 0); /* Changer la couleur des éléments "items" lorsqu'on les survoles */
+}
+
+/* Flèche pour le menu déroulant */
+.arrow{
+    font-size: 12px;
+    position: relative; /* Pour repositionner la flèche par rapport à ça position initiale */
+    top: -2px; /* Repositionnement de -2px sur le haut */
+}
+
+/* Balise <ul> de la liste déroulante */
+.liste-items-dropdown{
+    background-color: white;
+    border-bottom-left-radius: 10px; /* Pour arrondir les bords */
+    border-bottom-right-radius: 10px;
+    position: relative; /* Permet de déplacer un élément par rapport à ça position initial (tel qu'on l'aperçoit dans la page web) */
+    top: -3px; /* Pour supprimer l'espace entre la liste d'items droptown et la barre de navigation */
+    opacity: 0; /* Le sous-menu est invisible par défault */
+    transition: opacity 0.3s ease; /* Effet de transition pour l'apparition du sous-menu */
+}
+
+/* Balise <li> de la liste déroulante */
+.items-dropdown{
+    color: rgb(70, 70, 70);
+    border-bottom: 1px solid rgb(70, 70, 70);
+    list-style: none; /* Supprimer les puces de la liste */
+    text-align: center;
+    line-height: 40px; /* Pour modifier la taille de la sous-liste */
+}
+
+.items:hover > ul{ /* On modifie le comportement d'une liste "ul" fils d'un élément "items" (Destination) */
+    opacity: 1; /* Le sous-menu est visible */
+}
+
+.items-dropdown:hover{
+    background-color: rgb(241, 241, 241); /* Pour changer la couleur de background des éléments items-dropdown qui sont survolés */
+    box-shadow: 0px 0px 5px rgb(70, 70, 70);
+}
+
+/* On souhaite arrondir les bords inférieurs du dernier "item-dropdown" */
+.items-dropdown:nth-child(3){ /* Le troisième enfant de "items-dropdown" à des bords arrondi */
+    border-bottom-left-radius: 10px; /* Pour que la couleur de background des éléments survolés ne dépasse pas */
+    border-bottom-right-radius: 10px;
+}
+
+/***** Titre de la page *****/
+
+/* container-titre-1 pour centrer le titre au milieu de l'en-tête */
+.container-titre-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* container-titre-2 pour créer une bordure transparente autour du titre */
+.container-titre-2{
+    border: 10px solid white;
+    mix-blend-mode: screen; /* Effet de transparence sur le "container-titre-2" */
+    margin-bottom: 150px; /* Pour décaler le titre vers le haut */
+    padding: 10px;
+}
+
+.titre{
+    background-color: white;
+    padding: 12px;
+    mix-blend-mode: screen; /* Effet de transparence sur les lettres du titre */
+    font-size: 60px;
+}
+
+/********** Section **********/
+
+/* Section contenant 2 container */
+.section{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px -2px 5px white;
+    padding-right: 60px; /* Marges intérieurs droite pour toute la section */
+    padding-left: 60px; /* Marges intérieurs gauche pour toute la section */
+}
+
+/***** Paramètres globaux section *****/
+
+/* Paramètres globaux pour les titres de la section */
+.titres-section{
+    color: rgb(70, 70, 70);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 30px;
+}
+
+/* Paramètres globaux pour les paragraphes de la section */
+.paragraphes-section{
+    color: rgb(70, 70, 70);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    line-height: 30px;
+}
+
+/***** Introduction de la section *****/
+
+.container-intro{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+.paragraphe-intro{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.separateurs-texte-intro{
+    background-color: rgb(224, 149, 0);
+    width: 50%; /* Largeur de 50% de la page */
+    height: 4px; /* Épaisseur de la ligne */
+    margin-left: 25%; /* Centré au milieu de la page */
+    margin-top: 30px;
+    margin-bottom: 10px; /* S'additione avec ( margin-top: 80px) de "titre-section-articles" */
+}
+
+/***** Partie article de la section *****/
+
+.titre-section-articles{
+    text-align: left;
+    margin-top: 80px; /* S'additione avec (margin-bottom: 10px) de "separateurs-texte-intro" */
+}
+
+.container-articles{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px; /* Marges intérieurs horizontal et vertical entre les éléments flex */
+    margin-top: 40px;
+    margin-bottom: 100px;
+}
+
+.article{
+    border: 1px solid rgb(70, 70, 70);
+    width: 320px;
+    height: 450px;
+    padding: 15px;
+    box-shadow: 0px 8px 20px rgb(185, 185, 185); /* Effet d'ombre vertical avec une épaisseur de 20px */
+    transition: transform 0.2s; /* Effet de transition sur la taille de l'article */
+    cursor: pointer;
+}
+
+.article:hover{
+    transform: scale(105%); /* L'échelle de l'image sera agrandi à 110%  */
+}
+
+.image-article{
+    width: 100%; /* L'image occupe 100% de la place de son parent */
+    height: auto;
+}
+
+.titre-article{
+    font-size: 22px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.content-article{
+    line-height: 25px;
+}
+
+/********** Pied de page **********/
+
+/* Pied de page contenant les Copyright */
+.footer{
+    background-color: rgb(70, 70, 70);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130px;
+    margin-top: 10px;
+}
+
+/* Copyright dans la balise footer */
+.copyright{
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    padding: 0px 10px;
+}
+
+/******************** Responsive Design pour Smartphones (768px) ********************/
+
+@media screen and (max-width: 768px){
+
+    /********** En-tête **********/
+
+    /* Container qui contient la barre de navigation */
+    .container-barre-navigation{
+        padding: 5px;
+    }
+
+    /* Barre de navigation menu */
+    nav{
+        width: 100%;
+    }
+
+    /********** Section **********/
+
+    .section{
+        padding-right: 30px; /* Marges intérieurs droite pour toute la section */
+        padding-left: 30px; /* Marges intérieurs gauche pour toute la section */
+    }
+
+    .paragraphes-section{
+        text-align: justify;
+        font-size: 14px;
+    }
+
+    .separateurs-texte-intro{
+        width: 90%;
+        margin-left: 5%; /* Centré au milieu de la page */
+    }
+
+    .titre-section-articles{
+        text-align: center;
+        font-size: 25px;
+    }
+
+    /********** Pied de page **********/
+
+    .copyright{
+        font-size: 14px;
+    }
+}
+
+/******************** Responsive Design pour Smartphones (580px) ********************/
+
+@media screen and (max-width: 580px){
+    
+    /********** En-tête **********/
+
+    /* Container qui contient la barre de navigation */
+    .container-barre-navigation{
+        padding: 0px; /* Pas de padding */
+    }
+
+    /* Barre de navigation menu */
+    nav{
+        background-color: rgba(70, 70, 70, 0.5);
+        border-radius: 0px; /* Pour ne pas arrondir les bords */
+        height: 300px;
+        width: 100%;
+    }
+
+    /* Balise <ul> de la liste */
+    .liste-items{
+        flex-direction: column; /* Pour que les items soient en colonne */
+        align-items: center; /* Pour centrer les items */
+        line-height: 30px;
+        padding: 10px 0px; /* Marges intérieurs en haut et en bas de 10px et à gauche et à droite de 0px */
+    }
+
+    /* Balise <li> de la liste */
+    .items{
+        color: white;
+    }
+
+    /* Balise <ul> de la liste déroulante */
+    .liste-items-dropdown{
+        background-color: transparent; /* Pas de background-color */
+        border-bottom-left-radius: 0px; /* Pour ne pas arrondir les bords */
+        border-bottom-right-radius: 0px;
+        opacity: 1; /* Le sous-menu est visible par défault */
+    }
+
+    /* Balise <li> de la liste déroulante */
+    .items-dropdown{
+        color: white;
+        border-bottom: none; /* Aucune bordure */
+    }
+
+    .items-dropdown:hover{
+        background-color: transparent; /* Pas de background-color */
+        box-shadow: none; /* Pas de box-shadow */
+        color: rgb(224, 149, 0); /* Changer la couleur des éléments "items-dropdown" lorsqu'on les survoles */
+    }
+
+    .items-dropdown:nth-child(3){
+        border-bottom-left-radius: 0px; /* Pour ne pas arrondir les bords */
+        border-bottom-right-radius: 0px;
+    }
+
+    /***** Titre de la page *****/
+
+    .container-titre-2{
+        border: 6px solid white;
+        margin-bottom: 0px; /* Pour que le titre soit centré au milieu */
+        padding: 5px;
+    }
+
+    .titre{
+        padding: 12px;
+        font-size: 30px;
+    }
+}
